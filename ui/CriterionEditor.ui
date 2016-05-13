@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CriterionEditor</class>
+ <widget class="QMainWindow" name="CriterionEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>822</width>
+    <height>532</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CriterionEditor</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="ImageContainer" name="imgContainer" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>591</width>
+      <height>471</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>611</x>
+      <y>11</y>
+      <width>138</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Header Information:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ledtName">
+    <property name="geometry">
+     <rect>
+      <x>663</x>
+      <y>36</y>
+      <width>141</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>611</x>
+      <y>129</y>
+      <width>89</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Element List:</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>611</x>
+      <y>152</y>
+      <width>201</width>
+      <height>331</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>613</x>
+      <y>40</y>
+      <width>44</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Name:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>613</x>
+      <y>71</y>
+      <width>86</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rule Region:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ledtRule">
+    <property name="geometry">
+     <rect>
+      <x>613</x>
+      <y>94</y>
+      <width>191</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>822</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionRefresh"/>
+    <addaction name="actionDone_Insert"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <widget class="QMenu" name="menuRule">
+     <property name="title">
+      <string>Rule</string>
+     </property>
+     <addaction name="actiontwo_line"/>
+     <addaction name="actionCircle_rule"/>
+    </widget>
+    <addaction name="actionTwoLine"/>
+    <addaction name="actionCircle"/>
+    <addaction name="separator"/>
+    <addaction name="menuRule"/>
+    <addaction name="actionBasic_circle"/>
+    <addaction name="separator"/>
+    <addaction name="actionBlind_hole_2"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionTwoLine">
+   <property name="text">
+    <string>TwoLine</string>
+   </property>
+  </action>
+  <action name="actionCircle">
+   <property name="text">
+    <string>Circle</string>
+   </property>
+  </action>
+  <action name="actionRefresh">
+   <property name="text">
+    <string>Refresh</string>
+   </property>
+  </action>
+  <action name="actionDone_Insert">
+   <property name="text">
+    <string>Done(Insert)</string>
+   </property>
+  </action>
+  <action name="actionBlind_hole_2">
+   <property name="text">
+    <string>Blind hole</string>
+   </property>
+  </action>
+  <action name="actionBasic_circle">
+   <property name="text">
+    <string>Basic circle</string>
+   </property>
+  </action>
+  <action name="actiontwo_line">
+   <property name="text">
+    <string>two line</string>
+   </property>
+  </action>
+  <action name="actionCircle_rule">
+   <property name="text">
+    <string>circle</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ImageContainer</class>
+   <extends>QWidget</extends>
+   <header>ImageContainer.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

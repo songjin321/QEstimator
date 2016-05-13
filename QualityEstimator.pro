@@ -76,6 +76,12 @@ LIBS += -LF:/Vision_Detect/lib/x64\
         -l/x64/PylonC_MD_VC120.lib\
         -l/PylonGUI_MD_VC120_v5_0.lib\
         -l/PylonUtility_MD_VC120_v5_0.lib\
+#DaHeng camera required
+INCLUDEPATH +=F:/Vision_Detect/MER-Series/Samples/VC_SDK/inc
+
+LIBS += -LF:/Vision_Detect/MER-Series/Samples/VC_SDK/lib/x64\
+        -l/DxImageProc.lib
+        -l/GxIAPI.lib
 
 
 

@@ -1,4 +1,4 @@
-﻿#include "ImageContainer.h"
+#include "ImageContainer.h"
 #include <QDebug>
 #include "CriterionEditor.h"
 #include <algorithm>
@@ -64,7 +64,7 @@ void ImageContainer::drawFeatures(QPainter &painter){
         std::for_each(circles.begin(),circles.end(),
                       [&](const Round& c){
             painter.drawEllipse(pic2widget(QPoint(c.center.x,c.center.y)),
-                    int(c.radius/_img.width()*width()),int(c.radius/_img.height()*height()));
+                    c.radius/_img.width()*width(),c.radius/_img.height()*height());
         });
     }
 
@@ -85,8 +85,8 @@ void ImageContainer::drawSelectingFeature(QPainter &painter){
         break;
     case Feature_Circle:
         painter.drawEllipse(pic2widget(QPoint(circles[_selectingIndex].center.x,circles[_selectingIndex].center.y)),
-                            int(circles[_selectingIndex].radius/_img.width()*width()),
-                            int(circles[_selectingIndex].radius/_img.height()*height()));
+                            circles[_selectingIndex].radius/_img.width()*width(),
+                            circles[_selectingIndex].radius/_img.height()*height());
         break;
     default:
         break;

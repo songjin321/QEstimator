@@ -44,7 +44,8 @@ SOURCES +=\
     tiXml/tinyxml.cpp \
     tiXml/tinyxmlerror.cpp \
     tiXml/tinyxmlparser.cpp \
-    ioxml.cpp
+    ioxml.cpp \
+    main.cpp
 
 FORMS += \
     ui/MainWindow.ui \
@@ -60,17 +61,15 @@ INCLUDEPATH += F:/Opencv/opencv/build/include\
                 F:/Opencv/opencv/build/include/opencv/opencv2
 INCLUDEPATH +=  ./ui
 
-LIBS += F:/Opencv/opencv/build/x64/vc12/lib/opencv_ts300\
-        F:/Opencv/opencv/build/x64/vc12/lib/opencv_ts300d\
-        F:/Opencv/opencv/build/x64/vc12/lib/opencv_world300\
-        F:/Opencv/opencv/build/x64/vc12/lib/opencv_world300d\
+LIBS += -LF:/Opencv/opencv/build/x64/vc12/lib\
+        -l/opencv_world300d\
 
 #pylon camera required
 INCLUDEPATH +=  F:/Vision_Detect/include\
                 F:/Vision_Detect/include/pylon\
                 F:/Vision_Detect/include/pylon/usb\
 
-LIBS += -LF:/Vision Detect/lib/x64\
+LIBS += -LF:/Vision_Detect/lib/x64\
         -l/GCBase_MD_VC120_v3_0_Basler_pylon_v5_0.lib\
         -l/GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib\
         -l/PylonBase_MD_VC120_v5_0.lib\

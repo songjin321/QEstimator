@@ -22,7 +22,8 @@ HEADERS += ui/MainWindow.h \
     ui/PylonCamera.h \
     tiXml/tinystr.h \
     tiXml/tinyxml.h \
-    ioxml.h
+    ioxml.h \
+    ui/DaHengcamera.h
 
 SOURCES +=\
     ui/MainWindow.cpp \
@@ -45,7 +46,8 @@ SOURCES +=\
     tiXml/tinyxmlerror.cpp \
     tiXml/tinyxmlparser.cpp \
     ioxml.cpp \
-    main.cpp
+    main.cpp \
+    ui/DaHengcamera.cpp
 
 FORMS += \
     ui/MainWindow.ui \
@@ -53,16 +55,24 @@ FORMS += \
     ui/CriterionEditor.ui
 
 CONFIG  +=  c++11
-
+INCLUDEPATH +=  ./ui
 #opencv required
 
 INCLUDEPATH += F:/Opencv/opencv/build/include\
                 F:/Opencv/opencv/build/include/opencv \
                 F:/Opencv/opencv/build/include/opencv/opencv2
-INCLUDEPATH +=  ./ui
+
 
 LIBS += -LF:/Opencv/opencv/build/x64/vc12/lib\
         -l/opencv_world300d\
+#DaHeng camera required
+
+
+INCLUDEPATH += D:/MER-Series/Samples/VC_SDK/inc\
+
+
+LIBS += D:/MER-Series/Samples/VC_SDK/lib/x64/DxImageProc.lib\
+        D:/MER-Series/Samples/VC_SDK/lib/x64/GxIAPI.lib\
 
 #pylon camera required
 INCLUDEPATH +=  F:/Vision_Detect/include\
@@ -76,12 +86,6 @@ LIBS += -LF:/Vision_Detect/lib/x64\
         -l/x64/PylonC_MD_VC120.lib\
         -l/PylonGUI_MD_VC120_v5_0.lib\
         -l/PylonUtility_MD_VC120_v5_0.lib\
-#DaHeng camera required
-INCLUDEPATH +=F:/Vision_Detect/MER-Series/Samples/VC_SDK/inc
-
-LIBS += -LF:/Vision_Detect/MER-Series/Samples/VC_SDK/lib/x64\
-        -l/DxImageProc.lib
-        -l/GxIAPI.lib
 
 
 

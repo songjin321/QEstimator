@@ -1,9 +1,10 @@
-#include "MainWindow.h"
+﻿#include "MainWindow.h"
 #include "ui_MainWindow.h"
 #include <QDebug>
 #include <QtWidgets>
 #include "../EstimateSystem.h"
 #include "PylonCamera.h"
+#include "DaHengcamera.h"
 int detecttimes=0;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,16 +16,16 @@ MainWindow::MainWindow(QWidget *parent) :
     sleep_time(9*1000.0f),
     detect_time(100.0f),
     screenShotTimes(0)
-
 {
     ui->setupUi(this);
 
     //prepare for camera
     scene   =   new QGraphicsScene(this);
     ui->gvMain->setScene(scene);
-    ptrCamera  =   new PylonCamera;
+    //ptrCamera  =   new PylonCamera;
+    ptrCamera  = new DaHengCamera;
     refreshTimer    =   new QTimer;
-    refreshTimer->setInterval(33);//set fixed fps, may change by slot
+    refreshTimer->setInterval(24);//set fixed fps, may change by slot
     connect(refreshTimer,SIGNAL(timeout()),this,SLOT(updateFrame()));
 
     //init list

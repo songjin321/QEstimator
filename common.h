@@ -7,7 +7,7 @@
 const float PI  =   3.1415926f;
 #endif
 #ifndef DTIMES  //
-const int DTIMES = 7;
+const int DTIMES = 3;
 #endif
 //opencv head file
 #include <opencv2/opencv.hpp>

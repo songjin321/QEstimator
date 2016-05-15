@@ -12,8 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     frame(nullptr),
     _system(nullptr),
     isSystemRunning(false),
-    isRun(false),
-    sleep_time(9*1000.0f),
+    sleep_time(5*1000.0f),
     detect_time(100.0f),
     screenShotTimes(0)
 {
@@ -22,10 +21,9 @@ MainWindow::MainWindow(QWidget *parent) :
     //prepare for camera
     scene   =   new QGraphicsScene(this);
     ui->gvMain->setScene(scene);
-    //ptrCamera  =   new PylonCamera;
-    ptrCamera  = new DaHengCamera;
+    ptrCamera =new PylonCamera;
     refreshTimer    =   new QTimer;
-    refreshTimer->setInterval(24);//set fixed fps, may change by slot
+    refreshTimer->setInterval(23);//set fixed fps, may change by slot
     connect(refreshTimer,SIGNAL(timeout()),this,SLOT(updateFrame()));
 
     //init list
@@ -40,9 +38,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _criterionEditor    =   new CriterionEditor;
     connect(ui->actionCiterionEditor,SIGNAL(toggled(bool)),_criterionEditor,SLOT(setVisible(bool)));
     connect(_criterionEditor,SIGNAL(refreshImage()),this,SLOT(on_RefreshImage()));
-
-    //
-    //currentFrame.load("../QualityEstimator/source.jpg");
 
     //connet judge, called when system active
     judgeTimer  =   new QTimer;
@@ -62,7 +57,6 @@ MainWindow::~MainWindow()
         delete _system;
     if(ptrCamera)
         delete ptrCamera;
-
     delete ui;
 }
 
@@ -82,19 +76,6 @@ void MainWindow::stopUpdateFrame()
 void MainWindow::on_actionRun_triggered()
 {
         qDebug()<<"system run"<<endl;
-#if 0
-    if(!_system)
-        _system =   new EstimateSystem;
-
-    _system->calcPixelsPerMilimeter(fromQImage2Mat(currentFrame));
-    _system->runWithPicture(fromQImage2Mat(currentFrame));
-//    WorkpieceEstimator* we  =   new WorkpieceEstimator;
-//    bool re =   we->judgeTest();
-//    qDebug()<<(re?"qualified!":"unqualified...");
-
-#else
-    if(!isRun)
-    {
         ptrCamera->beginCapture();
         refreshTimer->start();
         //Modify fit the camera BY SJ
@@ -109,9 +90,6 @@ void MainWindow::on_actionRun_triggered()
         qDebug()<<"ui.width="<<ui->gvMain->width()<<"ui.height="<<ui->gvMain->height();
         qDebug()<<"rw="<<rw<<"rh="<<rh;
         ui->gvMain->scale(r,r);
-        isRun=true;
-    }
-#endif
 }
 void MainWindow::on_actionDetect_triggered()
 {
@@ -225,4 +203,20 @@ void MainWindow::grabStart(){
 void MainWindow::on_btnSysRun_clicked(){
     qDebug()<<"on push button"<<endl;
     emit ui->actionRun->triggered();
+}
+
+void MainWindow::on_actionPylonCamera_triggered()
+{
+        ptrCamera->endCapture();
+        ptrCamera  = new PylonCamera;
+        ptrCamera->beginCapture();
+        QMessageBox::information(this,tr("Change Camera"),tr("Change camera to PylonCamera"),QMessageBox::Ok);
+}
+
+void MainWindow::on_actionDaHengCamera_triggered()
+{
+     ptrCamera->endCapture();
+     ptrCamera  = new DaHengCamera;
+     ptrCamera->beginCapture();
+     QMessageBox::information(this,tr("Change Camera"),tr("Change camera to DaHengCamera"),QMessageBox::Ok);
 }

@@ -1,9 +1,9 @@
-#include "WorkpieceEstimator.h"
+﻿#include "WorkpieceEstimator.h"
 #include "Pretreatment.h"
 #include "FeatureExtractor.h"
 #include "CriterionManager.h"
 #include <QDebug>
-#include <math.h>\
+#include <math.h>
 #include "ui/MainWindow.h"
 #include "common.h"
 //#include "masterthread.h"
@@ -19,48 +19,6 @@ bool WorkpieceEstimator::judgeTest(){
     bool qualified  =   true;
 
     Criterion* criterion    =   nullptr;
-
-#if 0
-    //here, init current criterion by code, which avoids redundant operations
-//    0 check
-//        line1: 1526,1247 -> 2102,708
-//        line2: 1908,1660 -> 2486,1118
-//        dis  : -1 to -1
-//        angle: -1 to -1
-//    0 check
-//        line1: 1526,1247 -> 2102,708
-//        line2: 2487,1112 -> 2110,709
-//        dis  : -1 to -1
-//        angle: -1 to -1
-    criterion   =   Criterion::create();
-    criterion->header.name  =   "debug";
-
-    TwoLineCriterion* tlc   =   new TwoLineCriterion;
-    tlc->_fLine.sPoint  =   Point(1526,1247);   tlc->_fLine.ePoint  =   Point(2102,708);
-    tlc->_sLine.sPoint  =   Point(1908,1660);   tlc->_sLine.ePoint  =   Point(2486,1118);
-    tlc->_fLine.direction   =   (tlc->_fLine.ePoint-tlc->_fLine.sPoint)/length2D(tlc->_fLine.ePoint-tlc->_fLine.sPoint);
-    tlc->_sLine.direction   =   (tlc->_sLine.ePoint-tlc->_sLine.sPoint)/length2D(tlc->_sLine.ePoint-tlc->_sLine.sPoint);
-    tlc->_distance.lower    =   tlc->_distance.upper    =   100.0f;
-    tlc->_angle.lower   =   tlc->_angle.upper   =   -1;
-    criterion->criterionList.push_back(tlc);
-
-    tlc =   new TwoLineCriterion;
-    tlc->_fLine.sPoint  =   Point(1526,1247);   tlc->_fLine.ePoint  =   Point(2102,708);
-    tlc->_sLine.sPoint  =   Point(2487,1112);   tlc->_sLine.ePoint  =   Point(2110,709);
-    tlc->_fLine.direction   =   (tlc->_fLine.ePoint-tlc->_fLine.sPoint)/length2D(tlc->_fLine.ePoint-tlc->_fLine.sPoint);
-    tlc->_sLine.direction   =   (tlc->_sLine.ePoint-tlc->_sLine.sPoint)/length2D(tlc->_sLine.ePoint-tlc->_sLine.sPoint);
-    tlc->_distance.lower    =   tlc->_distance.upper    =   -1;
-    tlc->_angle.lower   =   tlc->_angle.upper   =   90.0f;
-    criterion->criterionList.push_back(tlc);distanceOrder++;
-
-    if(!CriterionManager::getInstance()->addCriterion(criterion)){
-        qDebug()<<"failed to add criterion";
-    }
-    CriterionManager::getInstance()->setCurrentCriterion(criterion->header.name);
-    //delete criterion;   criterion   =   nullptr;
-    //cannot delete it!
-#endif
-
     criterion    =   CriterionManager::getInstance()->getCurrentCriteion();
     if(!criterion){
         qDebug()<<"estimate quit because invalid criterion!";

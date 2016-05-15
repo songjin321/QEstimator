@@ -70,19 +70,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnSysRun">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>30</y>
-      <width>99</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>System.run</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -90,7 +77,7 @@
      <x>0</x>
      <y>0</y>
      <width>911</width>
-     <height>25</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -103,8 +90,15 @@
     <property name="title">
      <string>System</string>
     </property>
+    <widget class="QMenu" name="menuSelect_Camera">
+     <property name="title">
+      <string>Select Camera</string>
+     </property>
+     <addaction name="actionPylonCamera"/>
+     <addaction name="actionDaHengCamera"/>
+    </widget>
     <addaction name="actionRun"/>
-    <addaction name="actionSelect_Camare"/>
+    <addaction name="menuSelect_Camera"/>
     <addaction name="actionDetect"/>
     <addaction name="actionScreen_shot"/>
    </widget>
@@ -148,11 +142,6 @@
     <string>Run</string>
    </property>
   </action>
-  <action name="actionSelect_Camare">
-   <property name="text">
-    <string>Select Camera</string>
-   </property>
-  </action>
   <action name="actionCiterionEditor">
    <property name="checkable">
     <bool>true</bool>
@@ -184,6 +173,16 @@
   <action name="actionScreen_shot">
    <property name="text">
     <string>Screen shot</string>
+   </property>
+  </action>
+  <action name="actionPylonCamera">
+   <property name="text">
+    <string>pylonCamera</string>
+   </property>
+  </action>
+  <action name="actionDaHengCamera">
+   <property name="text">
+    <string>daHengCamera</string>
    </property>
   </action>
  </widget>

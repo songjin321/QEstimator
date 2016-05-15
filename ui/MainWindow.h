@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -79,7 +79,6 @@ public:
     QImage currentFrame;
 
     bool isSystemRunning;
-    bool isRun;
 
     //
     float sleep_time;
@@ -88,6 +87,9 @@ public:
     int screenShotTimes;
     //
 
+private slots:
+    void on_actionPylonCamera_triggered();
+    void on_actionDaHengCamera_triggered();
 };
 
 #endif // MAINWINDOW_H

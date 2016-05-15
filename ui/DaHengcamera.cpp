@@ -57,7 +57,9 @@ void DaHengCamera::endCapture()
 QImage DaHengCamera::captureImage()
 {
     while(GXGetImage(hDevice,&stFrameData,100)!=GX_STATUS_SUCCESS)
-        Sleep(10);
+    {
+        qDebug()<<"DaHeng camera can't get Image";
+    }
     if(stFrameData.nStatus==GX_FRAME_STATUS_SUCCESS)
     {
         return QImage((uchar*)stFrameData.pImgBuf,
